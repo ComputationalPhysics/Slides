@@ -2,7 +2,7 @@
     include "../../config.php";
 
     session_start();
-    if($_SESSION["Login"] != "OK") {
+    if($_SESSION["Login"] != "OK" && $cPassword == "") {
         header("Location: ".$cRoot."/index.php");
         die("Access Denied");
     }
@@ -15,7 +15,7 @@
             echo "MathJax.Hub.Config({";
             echo "extensions: ['tex2jax.js'], ";
             echo "jax: ['input/TeX', 'output/HTML-CSS'], ";
-            echo "tex2jax: {inlineMath: [ ['$','$'], ['\\(','\\)'] ], displayMath: [ ['$$','$$'], ['\\[','\\]'] ], processEscapes: true}, ";
+            echo "tex2jax: {inlineMath: [ ['$','$'] ], displayMath: [ ['$$','$$'], ['\\[','\\]'] ], processEscapes: true}, ";
             echo "'HTML-CSS': { availableFonts: ['TeX'] }, ";
             echo "styles: {'.MathJax_SVG svg > g, .MathJax_SVG_Display svg > g': {fill: '".$sLatexColor."', stroke: '".$sLatexColor."'}}, ";
             echo "});".chr(10);
@@ -41,6 +41,15 @@
 
     echo "</head>".chr(10);
     echo "<body>".chr(10);
+    if($bLatex) {
+        echo "<div Style='visibility: hidden'>".chr(10);
+        echo "$".chr(10);
+        foreach($aCustomLatex as $sCustomLatex) {
+            echo $sCustomLatex.chr(10);
+        }
+        echo "$".chr(10);
+        echo "</div>".chr(10);
+    }
     echo "<div class='reveal'>".chr(10);
     echo "<div class='state-background'></div>".chr(10);
 ?>

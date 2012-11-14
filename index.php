@@ -19,19 +19,8 @@
 <head>
     <title>Slides</title>
     <meta Http-Equiv="Content-Type" Content="text/html; charset=UTF-8" />
+    <link Rel="stylesheet" Href="css/<?php echo $cStyle; ?>.css" />
 </head>
-
-<style Type="text/css">
-    .Body {Background: #000000;}
-    .Box {Margin: 120px auto 0 auto; Border: 0;}
-    .Text, .Header, .Footer {Color: #009DFF; Font-Family: Sans-Serif;}
-    .Text a, .Footer a {Color: #009DFF; Text-Decoration: None;}
-    .Text a:hover, .Footer a:hover {Color: #FC6C00; Text-Decoration: None;}
-    .Text {Padding: 8px; Font-Size: 20px; Text-Align: Left;}
-    .Header {Padding-Bottom: 4px; Font-Weight: Bold; Font-Size: 30px; Text-Align: Center; Border-Bottom: 1px Solid #005B94;}
-    .Footer {Padding-Top: 4px; Font-Size: 18px; Text-Align: Center; Border-Top: 1px Solid #005B94;}
-    .Text input {Background-Color: #000000; Color: #009DFF; Border: 1px Solid #009DFF; Text-Align: Center; Border-Radius: 4px; Padding: 4px;}
-</style>
 
 <script Type="text/javascript">
     function setFocus() {
@@ -49,8 +38,10 @@
                         $aPresentations = array();
                         foreach(scandir("presentations") as $sObject) {
                             if(is_dir("presentations/".$sObject) && substr($sObject, 0, 1) != ".") {
-                                include "presentations/".$sObject."/config.php";
-                                $aPresentations[strtotime($sPresentationDate)] = array("Title"=>$sPresentationTitle, "Path"=>$sObject);
+                                if(file_exists("presentations/".$sObject."/config.php")) {
+                                    include "presentations/".$sObject."/config.php";
+                                    $aPresentations[strtotime($sPresentationDate)] = array("Title"=>$sPresentationTitle, "Path"=>$sObject);
+                                }
                             }
                         }
                         ksort($aPresentations);
@@ -62,6 +53,7 @@
                     } else {
                         echo "<form Name='Form' Method='Post' Action='?Login=True'>";
                         echo "Password:&nbsp;<input Type='Password' Name='Password'>";
+                        echo "<input Type='Submit' Value='OK'>";
                         echo "</form>".chr(10);
                     }
                 ?>
