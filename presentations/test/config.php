@@ -7,6 +7,7 @@
 
     $sPresentationTitle  = "Test Presentation";
     $sPresentationDate   = "01.11.2011";
+    $sDisplayInList      = false;
     $sPresentationTheme  = "sky";
     $sPresentationReveal = "default";
     $bLatex              = true;

@@ -39,22 +39,29 @@
                         $aPresentations = array();
                         foreach(scandir("presentations") as $sObject) {
                             if(is_dir("presentations/".$sObject) && substr($sObject, 0, 1) != ".") {
+                                // Default Values
+                                $sPresentationTitle = "[No Name]";
+                                $sPresentationDate  = "01.01.2000";
+                                $sDisplayInList     = false;
+                                // Read Configs
                                 if(file_exists("presentations/".$sObject."/config.php")) {
                                     include "presentations/".$sObject."/config.php";
-                                    $aPresentations[strtotime($sPresentationDate)] = array("Title"=>$sPresentationTitle, "Path"=>$sObject);
+                                    $aPresentations[strtotime($sPresentationDate)] = array("Title"=>$sPresentationTitle, "Path"=>$sObject, "Display"=>$sDisplayInList);
                                 }
                             }
                         }
                         ksort($aPresentations);
                         $sPrevYear = "";
                         foreach($aPresentations as $sDate=>$aData) {
-                            if(date("Y", $sDate) != $sPrevYear) {
-                                echo "<div Class='Year'>".date("Y", $sDate)."</div>";
-                                $sPrevYear = date("Y", $sDate);
+                            if($aData["Display"]) {
+                                if(date("Y", $sDate) != $sPrevYear) {
+                                    echo "<div Class='Year'>".date("Y", $sDate)."</div>";
+                                    $sPrevYear = date("Y", $sDate);
+                                }
+                                echo "&raquo;&nbsp;&nbsp;<a Href='presentations/".$aData["Path"]."/'>";
+                                    echo date("d.m.Y", $sDate)." &ndash; ".$aData["Title"];
+                                echo "</a><br>".chr(10);
                             }
-                            echo "&raquo;&nbsp;&nbsp;<a Href='presentations/".$aData["Path"]."/'>";
-                                echo date("d.m.Y", $sDate)." &ndash; ".$aData["Title"];
-                            echo "</a><br>".chr(10);
                         }
                     } else {
                         echo "<form Name='Form' Method='Post' Action='?Login=True'>";
