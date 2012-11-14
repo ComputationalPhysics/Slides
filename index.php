@@ -1,4 +1,7 @@
 <?php
+    // Default values
+    $cStyle = "gray";
+
     include "config.php";
 
     session_start();
