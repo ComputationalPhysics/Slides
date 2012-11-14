@@ -1,0 +1,67 @@
+.Body {
+    Background: #EEEEEE;
+}
+
+.Box {
+    Margin: 120px auto 0 auto;
+    Border: 0;
+}
+
+.Text,
+.Header,
+.Footer {
+    Color: #000000;
+    Font-Family: Sans-Serif;
+}
+
+.Text a,
+.Footer a {
+    Color: #000000;
+    Text-Decoration: None;
+}
+
+.Text a:hover,
+.Footer a:hover {
+    Color: #FF0000;
+    Text-Decoration: None;
+}
+
+.Text {
+    Padding: 8px;
+    Font-Size: 20px;
+    Text-Align: Left;
+}
+
+.Text .Year {
+    Margin: 8px 0 4px 0;
+    Font-Weight: Bold;
+    Border-Bottom: 1px Dashed  #666666;
+}
+
+.Text .Year:after {
+    Content: ":";
+}
+
+.Header {
+    Padding-Bottom: 4px;
+    Font-Weight: Bold;
+    Font-Size: 30px;
+    Text-Align: Center;
+    Border-Bottom: 1px Solid #666666;
+}
+
+.Footer {
+    Padding-Top: 4px;
+    Font-Size: 18px;
+    Text-Align: Center;
+    Border-Top: 1px Solid #666666;
+}
+
+.Text input {
+    Background-Color: #EEEEEE;
+    Color: #000000;
+    Border: 1px Solid #666666;
+    Text-Align: Center;
+    Border-Radius: 4px;
+    Padding: 4px;
+}

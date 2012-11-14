@@ -6,6 +6,7 @@
     if($_GET["Login"] == "True") {
         $sPassword = $_POST["Password"];
         if($sPassword == $cPassword) $_SESSION["Login"] = "OK";
+        header("Location: index.php");
     }
 
     if($_GET["Login"] == "False") {
@@ -30,7 +31,7 @@
 
 <body Class="Body" OnLoad='setFocus()'>
     <table Class="Box">
-        <tr><td Class="Header">~¤~&nbsp;&nbsp;Slides&nbsp;&nbsp;~¤~</td></tr>
+        <tr><td Class="Header">Slides</td></tr>
         <tr>
             <td Class="Text">
                 <?php
@@ -45,7 +46,12 @@
                             }
                         }
                         ksort($aPresentations);
+                        $sPrevYear = "";
                         foreach($aPresentations as $sDate=>$aData) {
+                            if(date("Y", $sDate) != $sPrevYear) {
+                                echo "<div Class='Year'>".date("Y", $sDate)."</div>";
+                                $sPrevYear = date("Y", $sDate);
+                            }
                             echo "&raquo;&nbsp;&nbsp;<a Href='presentations/".$aData["Path"]."/'>";
                                 echo date("d.m.Y", $sDate)." &ndash; ".$aData["Title"];
                             echo "</a><br>".chr(10);
@@ -53,7 +59,7 @@
                     } else {
                         echo "<form Name='Form' Method='Post' Action='?Login=True'>";
                         echo "Password:&nbsp;<input Type='Password' Name='Password'>";
-                        echo "<input Type='Submit' Value='OK'>";
+                        echo "<input Type='Submit' Value='Login'>";
                         echo "</form>".chr(10);
                     }
                 ?>

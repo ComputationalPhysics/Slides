@@ -1,0 +1,84 @@
+.Body {
+    Background: #000000;
+    Background: url(blue/background.jpg) no-repeat center center fixed;
+}
+
+.Box {
+    Margin: 120px auto 0 auto;
+    Background: rgba(0,0,0,0.5);
+    Padding: 20px;
+    Border-Radius: 20px;
+    Border: 0;
+}
+
+.Text,
+.Header,
+.Footer {
+    Color: #009DFF;
+    Font-Family: Sans-Serif;
+}
+
+.Text a,
+.Footer a {
+    Color: #009DFF;
+    Text-Decoration: None;
+}
+
+.Text a:hover,
+.Footer a:hover {
+    Color: #FC6C00;
+    Text-Decoration: None;
+}
+
+.Text {
+    Padding: 8px;
+    Font-Size: 20px;
+    Text-Align: Left;
+}
+
+.Text .Year {
+    Margin: 8px 0 4px 0;
+    Font-Weight: Bold;
+    Text-Align: Center;
+    Border-Bottom: 1px Dashed  #009DFF;
+}
+
+.Text .Year:before {
+    Content: ".: ";
+}
+
+.Text .Year:after {
+    Content: " :.";
+}
+
+.Header {
+    Padding-Bottom: 4px;
+    Font-Weight: Bold;
+    Font-Size: 30px;
+    Text-Align: Center;
+    Border-Bottom: 1px Solid #005B94;
+}
+
+.Header:before {
+    Content: "~ ";
+}
+
+.Header:after {
+    Content: " ~";
+}
+
+.Footer {
+    Padding-Top: 4px;
+    Font-Size: 15px;
+    Text-Align: Center;
+    Border-Top: 1px Solid #005B94;
+}
+
+.Text input {
+    Background-Color: #000000;
+    Color: #009DFF;
+    Border: 1px Solid #009DFF;
+    Text-Align: Center;
+    Border-Radius: 4px;
+    Padding: 4px;
+}
